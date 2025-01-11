@@ -9,15 +9,15 @@ public static class ProceduraGenerationAlgorithm
         HashSet<Vector2Int> path = new HashSet<Vector2Int>();
 
         path.Add(startPosition);
-        var previousPosition = startPosition;
+        var previousPosition = startPosition; // previousPosition = (0,0)
 
         for (int i = 0; i < walkLength; i++)
         {
-            var newPosition = previousPosition + Direction2D.getCardinalRandomDirection();
+            var newPosition = previousPosition + Direction2D.getCardinalRandomDirection(); // eg. (0,0)+(0,1)=(1,1) Up
             path.Add(newPosition);
             previousPosition = newPosition;
         }
-        return path;
+        return path; // eg. (0,0),(0,1),(1,1),(1,2)...  // Hashset won't record the same value
     }
 }
 
@@ -33,6 +33,6 @@ public static class Direction2D
 
     public static Vector2Int getCardinalRandomDirection()
     {
-        return cardinalDirectionList[Random.Range(0, cardinalDirectionList.Count)];
+        return cardinalDirectionList[Random.Range(0, cardinalDirectionList.Count)]; // Count: Gets the number of elements contained in the List<T>.
     }
 }

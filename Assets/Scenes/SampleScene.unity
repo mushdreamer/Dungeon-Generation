@@ -467,8 +467,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1611742509}
-        m_TargetAssemblyTypeName: SimpleRandomWalkMapGenerator, Assembly-CSharp
-        m_MethodName: runProceduralGeneration
+        m_TargetAssemblyTypeName: AbstractDungeonGenerator, Assembly-CSharp
+        m_MethodName: GenerateDungeon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -773,11 +773,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee0cfec6e858d34db715d5bb5142278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemapVisualizer: {fileID: 1965822759}
   startPosition: {x: 0, y: 0}
   iterations: 10
   walkLength: 10
   startRandomlyEachIteration: 1
-  tilemapVisualizer: {fileID: 1965822759}
 --- !u!4 &1611742510
 Transform:
   m_ObjectHideFlags: 0
