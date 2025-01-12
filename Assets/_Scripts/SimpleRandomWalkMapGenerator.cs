@@ -14,12 +14,11 @@ public class SimpleRandomWalkMapGenerator : AbstractDungeonGenerator
     protected override void RunProceduralGeneration()
     {
         HashSet<Vector2Int> floorPositions = runRandomWalk();
-        /*foreach (var position in floorPositions)
-        {
-            Debug.Log(position);
-        }*/
+
         tilemapVisualizer.Clear();
         tilemapVisualizer.paintFloorTile(floorPositions);
+
+        WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
     }
 
     protected HashSet<Vector2Int> runRandomWalk()
