@@ -19,6 +19,22 @@ public static class ProceduraGenerationAlgorithm
         }
         return path; // eg. (0,0),(0,1),(1,1),(1,2)...  // Hashset won't record the same value
     }
+
+    public static List<Vector2Int> RandomWalkCorridor(Vector2Int startPosition, int corridorLength)
+    {
+        List<Vector2Int> corridor = new List<Vector2Int>();
+        var direction = Direction2D.getCardinalRandomDirection();
+        var currentPosition = startPosition;
+        corridor.Add(currentPosition);
+
+        for (int i = 0;i < corridorLength; i++)
+        {
+            currentPosition += direction;
+            corridor.Add(currentPosition);
+        }
+
+        return corridor;
+    }
 }
 
 public static class Direction2D
