@@ -9,11 +9,11 @@ using Random = UnityEngine.Random;
 public class SimpleRandomWalkMapGenerator : AbstractDungeonGenerator
 {
     [SerializeField]
-    private SimpleRandomWalkData SimpleRandomWalkParameters;
+    protected SimpleRandomWalkData SimpleRandomWalkParameters;
 
     protected override void RunProceduralGeneration()
     {
-        HashSet<Vector2Int> floorPositions = runRandomWalk(SimpleRandomWalkParameters);
+        HashSet<Vector2Int> floorPositions = runRandomWalk(SimpleRandomWalkParameters, startPosition);
 
         tilemapVisualizer.Clear();
         tilemapVisualizer.paintFloorTile(floorPositions);
@@ -21,9 +21,9 @@ public class SimpleRandomWalkMapGenerator : AbstractDungeonGenerator
         WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
     }
 
-    protected HashSet<Vector2Int> runRandomWalk(SimpleRandomWalkData parameters)
+    protected HashSet<Vector2Int> runRandomWalk(SimpleRandomWalkData parameters, Vector2Int position)
     {
-        var currentPosition = startPosition;
+        var currentPosition = position;
         HashSet<Vector2Int> floorPositions = new HashSet<Vector2Int>();
         for (int i = 0; i < parameters.iterations; i++)
         {
