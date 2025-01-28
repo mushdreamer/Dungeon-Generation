@@ -37,6 +37,7 @@ public static class ProceduraGenerationAlgorithm
     }
 }
 
+//存储方向坐标
 public static class Direction2D
 {
     public static List<Vector2Int> cardinalDirectionList = new List<Vector2Int>
@@ -47,6 +48,7 @@ public static class Direction2D
         new Vector2Int(-1,0) //left
     };
 
+    //获取随机方向坐标
     public static Vector2Int getCardinalRandomDirection()
     {
         return cardinalDirectionList[Random.Range(0, cardinalDirectionList.Count)]; // Count: Gets the number of elements contained in the List<T>.

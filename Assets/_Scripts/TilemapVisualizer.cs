@@ -8,12 +8,8 @@ public class TilemapVisualizer : MonoBehaviour
 {
     [SerializeField]
     private Tilemap floorTilemap;
-    /*[SerializeField]
-    private Tilemap wallTilemap;*/
     [SerializeField]
     private TileBase floorTile;
-    /*[SerializeField]
-    private TileBase wallTop;*/
 
     public void paintFloorTile(IEnumerable<Vector2Int> floorPositions)
     {
@@ -27,10 +23,6 @@ public class TilemapVisualizer : MonoBehaviour
             paintSingleTile(tilemap, tile, position);
         }
     }
-    /*internal void PaintSingleBasicWall(Vector2Int position)
-    {
-        paintSingleTile(wallTilemap, wallTop, position);
-    }*/
 
     private void paintSingleTile(Tilemap tilemap, TileBase tile, Vector2Int position)
     {
@@ -41,7 +33,6 @@ public class TilemapVisualizer : MonoBehaviour
     public void Clear()
     {
         floorTilemap.ClearAllTiles();
-        /*wallTilemap.ClearAllTiles();*/
     }
 
 }

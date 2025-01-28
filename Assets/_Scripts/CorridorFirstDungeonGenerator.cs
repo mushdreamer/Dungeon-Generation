@@ -29,7 +29,6 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkMapGenerator
         floorPositions.UnionWith(roomPosition);
 
         tilemapVisualizer.paintFloorTile(floorPositions);
-        /*WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);*/
     }
 
     private HashSet<Vector2Int> createRoom(HashSet<Vector2Int> potentialRoomPosition)
