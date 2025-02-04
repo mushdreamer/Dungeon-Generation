@@ -18,16 +18,18 @@ public class SimpleRandomWalkMapGenerator : AbstractDungeonGenerator
         tilemapVisualizer.Clear();
         tilemapVisualizer.paintFloorTile(floorPositions);
 
-        /*WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);*/
     }
 
+
+    //调用ProceduralGenerationAlgorithm.SimpleRandomWalk生成路径
     protected HashSet<Vector2Int> runRandomWalk(SimpleRandomWalkData parameters, Vector2Int position)
     {
         var currentPosition = position;
         HashSet<Vector2Int> floorPositions = new HashSet<Vector2Int>();
+
         for (int i = 0; i < parameters.iterations; i++)
         {
-            var path = ProceduraGenerationAlgorithm.SimpleRandomWalk(currentPosition, parameters.walkLength);
+            var path = ProceduralGenerationAlgorithm.SimpleRandomWalkforRoom(currentPosition, parameters.walkLength);
             floorPositions.UnionWith(path);
             if (parameters.startRandomlyEachIteration)
             {
