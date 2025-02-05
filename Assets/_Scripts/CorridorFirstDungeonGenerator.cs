@@ -32,11 +32,49 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkMapGenerator
         // 生成房间
         HashSet<Vector2Int> roomPosition = createRoom(potentialRoomPosition);
 
+        // 在末尾处填充房间
+        List<Vector2Int> deadEnds = FindAllDeadEnds(floorPositions);
+        CreateRoomatDeadEnds(deadEnds, roomPosition);
+
         // 合并走廊和房间的坐标
         floorPositions.UnionWith(roomPosition);
 
         // 绘制到Tilemap
         tilemapVisualizer.paintFloorTile(floorPositions);
+        FilltheBlankSpace.FilltheSpace(floorPositions, tilemapVisualizer);
+    }
+
+    private List<Vector2Int> FindAllDeadEnds(HashSet<Vector2Int> floorPositions)
+    {
+        List<Vector2Int> deadEnd = new List<Vector2Int>();
+        foreach(var position in floorPositions)
+        {
+            int neighboursCount = 0;
+            foreach(var direction in Direction2D.cardinalDirectionList)
+            {
+                if(floorPositions.Contains(position + direction))
+                {
+                    neighboursCount++;
+                }
+            }
+            if (neighboursCount == 1)
+            {
+                deadEnd.Add(position);
+            }
+        }
+        return deadEnd;
+    }
+
+    private void CreateRoomatDeadEnds(List<Vector2Int> deadEnds, HashSet<Vector2Int> roomFloors)
+    {
+        foreach (var position in deadEnds)
+        {
+            if (roomFloors.Contains(position) == false)
+            {
+                var endPosroom = runRandomWalk(SimpleRandomWalkParameters, position);
+                roomFloors.UnionWith(endPosroom);
+            }
+        }
     }
 
     //基于潜在位置生成随机房间，复用父类的runRandomWalk方法。

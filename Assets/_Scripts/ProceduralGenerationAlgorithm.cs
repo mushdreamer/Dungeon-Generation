@@ -49,7 +49,7 @@ public static class Direction2D
         new Vector2Int(0,1), //up
         new Vector2Int(1,0), //right
         new Vector2Int(0,-1), //down
-        new Vector2Int(-1,0) //left
+        new Vector2Int(-1,0), //left
     };
 
     //获取随机方向坐标
