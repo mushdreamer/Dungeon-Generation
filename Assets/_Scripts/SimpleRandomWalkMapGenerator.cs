@@ -18,6 +18,8 @@ public class SimpleRandomWalkMapGenerator : AbstractDungeonGenerator
         tilemapVisualizer.Clear();
         tilemapVisualizer.paintFloorTile(floorPositions);
 
+        FilltheBlankSpace.FilltheSpace(floorPositions, tilemapVisualizer);
+
     }
 
 
