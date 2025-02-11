@@ -14,7 +14,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGenerator
     [Range(0,10)]
     private int offset = 1;
     [SerializeField]
-    private bool randonWalkRooms = false;
+    private bool randomWalkRooms = false;
 
     protected override void RunProceduralGeneration()
     {
@@ -28,7 +28,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGenerator
 
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
 
-        if (randonWalkRooms)
+        if (randomWalkRooms)
         {
             floor = CreateRoomsRandomly(roomsList);
         }
@@ -60,8 +60,8 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGenerator
             var roomFloor = runRandomWalk(SimpleRandomWalkParameters, roomCenter);
             foreach (var position in roomFloor)
             {
-                if (position.x >= (roomBounds.xMin + offset) && position.x <= (roomBounds.xMax - offset) && position.y >= (roomBounds.yMin - offset)
-                    && position.y <= (roomBounds.yMax - offset))
+                if (position.x >= (roomBounds.xMin /*+ offset*/) && position.x <= (roomBounds.xMax /*- offset*/) && position.y >= (roomBounds.yMin /*- offset*/)
+                    && position.y <= (roomBounds.yMax /*- offset*/)) //Add offset to randomize the shape
                 {
                     floor.Add(position);
                 }
